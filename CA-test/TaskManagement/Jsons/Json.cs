@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.Json;
-using System.Threading.Tasks;
+﻿using System.Text.Json;
 using TaskManagement.Database;
 using TaskManagement.Database.Models;
 
@@ -62,13 +57,13 @@ namespace TaskManagement.Jsons
 
             //return people;
             var fileName = "Users.json";
-
-            using var stream = new FileStream(fileName, FileMode.Open);
-            var options = new JsonSerializerOptions
-            {
-                PropertyNameCaseInsensitive = true
-            };
-            var people = await JsonSerializer.DeserializeAsync<List<User>>(stream, options);
+            var people = Newtonsoft.Json.JsonConvert.DeserializeObject<List<User>>(fileName);
+            //using var stream = new FileStream(fileName, FileMode.Open);
+            //var options = new JsonSerializerOptions
+            //{
+            //    PropertyNameCaseInsensitive = true
+            //};
+            //var people = await JsonSerializer.DeserializeAsync<List<User>>(stream, options);
 
             return people;
         }

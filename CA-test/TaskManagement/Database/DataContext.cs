@@ -30,7 +30,7 @@ namespace TaskManagement.Database
         private static void AddUserSeeedings()
         {
             Users.Add(new User("Super", "Admin", "123321", "admin@gmail.com", new DateTime(2022, 01, 01),  UserRole.Admin));
-            //Users.Add(new User("Knyaz", "Heydarov", "123", "knyaz@code.edu.az", new DateTime(2023, 05, 13), UserRole.Member));
+            Users.Add(new User("Knyaz", "Heydarov", "123", "knyaz@code.edu.az", new DateTime(2023, 05, 13), UserRole.Member));
         }
     }
 }

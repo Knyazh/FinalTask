@@ -17,32 +17,25 @@ namespace TaskManagement.Client.Commands
         {
             Console.WriteLine("Enter the blog code:");
             string blogCode = Console.ReadLine();
+
             Blog blog = BlogRepository.GetByCode(blogCode);
-            while (true)
+
+            if (blog == null)
             {
-
-                if (blogCode == blog.Code)
-                {
-
-                    Console.WriteLine("Enter the comment text:");
-                    string commentText = Console.ReadLine();
-
-                    var comment = new Comment(commentText, blog.Owner);
-                    blog.Comments.Add(comment);
-
-                    Console.WriteLine("Comment added successfully");
-
-                    string message = $"{blogCode} blog code. Comment added by:{comment.Owner.Name} {comment.Owner.LastName}.";
-                    Console.WriteLine(message);
-                    return;
-                }
-                else if (blog == null || blogCode != blog.Code)
-                {
-                    Console.WriteLine("Invalid blog code");
-
-                }
+                Console.WriteLine("Invalid blog code");
+                return;
             }
 
+            Console.WriteLine("Enter the comment text:");
+            string commentText = Console.ReadLine();
+
+            var comment = new Comment(commentText, blog.Owner);
+            blog.Comments.Add(comment);
+
+            Console.WriteLine("Comment added successfully");
+
+            string message = $"{blogCode} blog code {comment.Owner.Name} {comment.Owner.LastName} tərəfindən comment əlavə olundu.";
+            Console.WriteLine(message);
         }
 
         public class Comment
@@ -58,4 +51,6 @@ namespace TaskManagement.Client.Commands
         }
     }
 }
+
+
 

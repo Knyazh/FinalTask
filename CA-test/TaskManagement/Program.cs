@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Reflection.Metadata;
 using System.Text.Json;
 using TaskManagement.Client.Commands;
 using TaskManagement.Common.Commands;
@@ -17,7 +18,6 @@ namespace TaskManagement
 
         static void Main(string[] args)
         {
-            Json.DeserializePersonFromFile();
             while (true)
             {
                 Console.WriteLine("Available commands");
